@@ -2,15 +2,15 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 
-// 远程react component
-const ReactButton = React.lazy(() => import("ReactApp/ReactButton"));
+// 远程vue component
+const VueButton = React.lazy(() => import("VueApp/VueButton"));
 
-// 远程react utils
-var loadRemoteReactUtils = async () => {
-	return (await import("ReactApp/ReactUtils")).default;
+// 远程vue utils
+const loadRemoteVueUtils = async () => {
+	return (await import("VueApp/VueUtils")).default;
 };
 
-const ReactComp = () => {
+const VueComp = () => {
 	const [remoteModule, setRemoteModule] = useState<{
 		greet?: (msg: string) => void;
 	}>({});
@@ -21,19 +21,23 @@ const ReactComp = () => {
 
 	useEffect(() => {
 		const loadModule = async () => {
-			const module = await loadRemoteReactUtils();
+			const module = await loadRemoteVueUtils();
 			setRemoteModule(module);
 		};
 
 		loadModule();
 	}, []);
 
+	useEffect(() => {
+		console.log(VueButton);
+	}, [VueButton]);
+
 	return (
 		<div>
-			<h2>react 调用 react</h2>
-			<ReactButton click={handleClickRemote} />
+			<h2>vue 调用 react</h2>
+			<VueButton click={handleClickRemote} />
 		</div>
 	);
 };
 
-export default ReactComp;
+export default VueComp;

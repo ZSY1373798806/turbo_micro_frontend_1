@@ -1,7 +1,7 @@
 const greet = (msg: string) => {
-  alert(`react app: ${msg}`);
-}
+	alert(`react app: ${msg}`);
+};
 
 export default {
-  greet,
-}
+	greet,
+};

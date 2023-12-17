@@ -34,7 +34,7 @@ module.exports = {
 					filename: "remoteEntry.js",
 					exposes: {
 						"./ReactButton": "./src/components/react-button.tsx",
-						"./ReactCube": "./src/components/react-cube.tsx",
+						"./ReactDiv": "./src/components/react-div.tsx",
 						"./ReactUtils": "./src/utils/index.ts",
 					},
 					remotes: {

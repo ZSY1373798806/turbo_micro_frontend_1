@@ -1,8 +1,12 @@
 interface IProps {
-  click: () => void;
+	click: () => void;
 }
 const ReactButton = (props: IProps) => {
-  return <button onClick={props.click}>远程 react button</button>
-}
+	const handleClick = () => {
+		console.log("远程打印");
+		props.click();
+	};
+	return <button onClick={handleClick}>远程 react button</button>;
+};
 
 export default ReactButton;

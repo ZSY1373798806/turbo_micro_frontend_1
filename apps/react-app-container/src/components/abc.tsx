@@ -1,8 +1,8 @@
 interface IProps {
-  click: () => void;
+	click: () => void;
 }
 const ABC = (props: IProps) => {
-  return <button onClick={props.click}>ABC</button>
-}
+	return <button onClick={props.click}>ABC</button>;
+};
 
 export default ABC;
