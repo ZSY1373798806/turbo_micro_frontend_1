@@ -33,23 +33,24 @@ module.exports = {
 					name: "ReactApp",
 					filename: "remoteEntry.js",
 					exposes: {
-						"./ReactButton": "./src/components/react-button.tsx",
-						"./ReactDiv": "./src/components/react-div.tsx",
 						"./ReactUtils": "./src/utils/index.ts",
+						"./ReactHeader": "./src/components/Header/index.tsx",
+						"./ReactUserInfo": "./src/components/UserInfo/index.tsx",
+            "./ReactInVueUtils": "./src/utils/react-in-vue.ts",
 					},
 					remotes: {
 						VueApp: `VueApp@${process.env.REACT_APP_REMOTE_URL}/remoteEntry.js`,
 					},
-          // 无效
-          // shared: {
+					// 无效
+					// shared: {
 					// 	...deps,
 					// 	react: {
-          //     eager: true,
+					//     eager: true,
 					// 		singleton: true,
 					// 		requiredVersion: deps['react'],
 					// 	},
 					// 	"react-dom": {
-          //     eager: true,
+					//     eager: true,
 					// 		singleton: true,
 					// 		requiredVersion: deps["react-dom"],
 					// 	},

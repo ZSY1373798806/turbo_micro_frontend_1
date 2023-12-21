@@ -32,9 +32,6 @@ module.exports = {
 				new ModuleFederationPlugin({
           name: "ReactAppContainer",
 					filename: "remoteEntry.js",
-					exposes: {
-						"./ABC": "./src/components/abc.tsx",
-					},
 					remotes: {
 						ReactApp: `ReactApp@${process.env.REACT_APP_REACT_REMOTE_URL}/remoteEntry.js`,
 						VueApp: `VueApp@${process.env.REACT_APP_VUE_REMOTE_URL}/remoteEntry.js`,

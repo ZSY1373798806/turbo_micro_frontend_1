@@ -1,18 +1,47 @@
-import "./App.css";
-import ReactComp from "./components/ReactComp";
-import VueComp from "./components/VueComp";
+import React from "react";
+import style from "./App.module.css";
+
+import RemoteVue from "./components/RemoteVue";
+const ReactHeader = React.lazy(() => import("ReactApp/ReactHeader"));
 
 function App() {
 	return (
 		<div className="App">
-			<header className="App-header">
-				<h1>React App Container</h1>
-				<div className="app-cube">React App Container组件</div>
-				<hr />
-				<ReactComp />
-				<hr />
-				<VueComp />
-			</header>
+			<div className={style.header}>
+				<ReactHeader title="this is remote react header" />
+			</div>
+			<div className={style.body}>
+				<div className={style.sidebar}>
+					<RemoteVue
+						mfName="VueApp"
+						module="./Sidebar"
+						attrs={{
+							props: {
+								title: "this is sidebar title",
+							},
+							on: {
+								click: () => {
+									console.log("hello");
+								},
+							},
+						}}
+					/>
+				</div>
+				<div className={style.body}>body</div>
+			</div>
+			<div className={style.footer}>
+				<RemoteVue
+					mfName="VueApp"
+					module="./Footer"
+					attrs={{
+						props: {
+							bgColor: "yellow",
+							title: "this is sidebar title",
+							year: 2023,
+						},
+					}}
+				/>
+			</div>
 		</div>
 	);
 }

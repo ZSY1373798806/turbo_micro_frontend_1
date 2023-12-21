@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { getRemoteScript, reactInVue } from "@repe/remote-utils";
+import { getRemoteScript } from "@repe/remote-utils";
 export default {
 	name: "RemoteComp",
 	data() {
@@ -23,12 +23,19 @@ export default {
 	},
 	async mounted() {
 		const REMOTE_URL = process.env.VUE_APP_REMOTE_PATH;
+		// import 远程挂载vue组件的方法
+		const ReactInVueUtils = await getRemoteScript(
+			`${REMOTE_URL}/remoteEntry.js`,
+			this.mfName,
+			"./ReactInVueUtils",
+		);
+		console.log(ReactInVueUtils);
 		const result = await getRemoteScript(
 			`${REMOTE_URL}/remoteEntry.js`,
 			this.mfName,
 			this.module,
 		);
-		reactInVue(result, this.$refs.root, {
+		ReactInVueUtils(result, this.$refs.root, {
 			...this.$props,
 			...this.$listeners,
 			...this.$attrs,

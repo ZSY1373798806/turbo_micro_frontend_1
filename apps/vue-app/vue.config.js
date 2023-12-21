@@ -29,9 +29,9 @@ module.exports = defineConfig({
 				name: "VueApp",
 				filename: "remoteEntry.js",
 				exposes: {
-					"./VueButton": "./src/components/vue-button.vue",
-					"./VueUtils": "./src/utils/index.js",
-					"./VueMountComponentMain": "./src/utils/vue-in-react-utils.js",
+					"./Sidebar": "./src/components/Sidebar/index.vue",
+					"./Footer": "./src/components/Footer/index.vue",
+					"./VueInReactUtils": "./src/utils/vue-in-react-utils.js",
 				},
 				remotes: {
 					ReactApp: `ReactApp@${process.env.VUE_APP_REMOTE_PATH}/remoteEntry.js`,
@@ -42,7 +42,7 @@ module.exports = defineConfig({
 		delete config.optimization.splitChunks;
 	},
 	devServer: {
-		port: 8888,
+		port: 8889,
 		open: false,
 		proxy: {},
 	},

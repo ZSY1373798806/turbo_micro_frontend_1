@@ -1,0 +1,15 @@
+.body {
+  display: flex;
+  height: 600px;
+}
+.header {
+  height: 100px;
+  background: green;
+}
+.sidebar {
+  width: 300px;
+  background: blanchedalmond;
+}
+.footer {
+  height: 100px;
+}
