@@ -2,6 +2,7 @@ import React from "react";
 import style from "./App.module.css";
 
 import RemoteVue from "./components/RemoteVue";
+import RemoteReact from "./components/RemoteReact";
 const ReactHeader = React.lazy(() => import("ReactApp/ReactHeader"));
 
 function App() {
@@ -9,6 +10,11 @@ function App() {
 		<div className="App">
 			<div className={style.header}>
 				<ReactHeader title="this is remote react header" />
+				<RemoteReact
+					mfName="ReactApp"
+					module="./ReactHeader"
+					attrs={{ title: "this is remote react header" }}
+				/>
 			</div>
 			<div className={style.body}>
 				<div className={style.sidebar}>

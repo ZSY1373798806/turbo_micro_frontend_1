@@ -31,7 +31,6 @@ module.exports = defineConfig({
 				exposes: {
 					"./Sidebar": "./src/components/Sidebar/index.vue",
 					"./Footer": "./src/components/Footer/index.vue",
-					"./VueInReactUtils": "./src/utils/vue-in-react-utils.js",
 				},
 				remotes: {
 					ReactApp: `ReactApp@${process.env.VUE_APP_REMOTE_PATH}/remoteEntry.js`,

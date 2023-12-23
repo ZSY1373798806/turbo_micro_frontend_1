@@ -37,11 +37,13 @@ const RemoteVue = (props: IProps) => {
 			mfName,
 			module,
 		);
-
-		vueInReact(result, ref.current, {
-			props: attrs.props,
-			on: attrs.on,
-		});
+		console.log(ref.current);
+		if (ref.current) {
+			vueInReact(result, ref.current, {
+				props: attrs.props,
+				on: attrs.on,
+			});
+		}
 	};
 	useEffect(() => {
 		getRemoteComp();

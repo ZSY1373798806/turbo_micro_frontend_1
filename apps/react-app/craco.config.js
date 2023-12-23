@@ -36,7 +36,6 @@ module.exports = {
 						"./ReactUtils": "./src/utils/index.ts",
 						"./ReactHeader": "./src/components/Header/index.tsx",
 						"./ReactUserInfo": "./src/components/UserInfo/index.tsx",
-            "./ReactInVueUtils": "./src/utils/react-in-vue.ts",
 					},
 					remotes: {
 						VueApp: `VueApp@${process.env.REACT_APP_REMOTE_URL}/remoteEntry.js`,
