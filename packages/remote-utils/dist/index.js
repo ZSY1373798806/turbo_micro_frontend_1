@@ -16,22 +16,29 @@ exports.vueInReact = exports.reactInVue = exports.getRemoteScript = void 0;
 const react_1 = __importDefault(require("react"));
 const client_1 = __importDefault(require("react-dom/client"));
 const vue_1 = __importDefault(require("vue"));
-const getRemoteScript = (remoteUrl, mfName, module) => {
+const getRemoteScript = (remoteUrl, mfName, module) => __awaiter(void 0, void 0, void 0, function* () {
+    let scope = window[mfName];
+    if (scope === null || scope === void 0 ? void 0 : scope.get(module)) {
+        const result = yield scope.get(module);
+        const remoteModule = result();
+        return Promise.resolve(remoteModule.default);
+    }
     const script = document.createElement("script");
     script.src = remoteUrl;
     script.async = true;
     document.head.appendChild(script);
     return new Promise((resolve, reject) => {
         script.onload = () => __awaiter(void 0, void 0, void 0, function* () {
-            const result = yield window[mfName].get(module);
+            scope = window[mfName];
+            const result = yield scope.get(module);
             const remoteModule = result();
             resolve(remoteModule.default);
         });
         script.onerror = () => {
-            reject(new Error("加载远程地址： 失败"));
+            reject(new Error("加载远程地址失败"));
         };
     });
-};
+});
 exports.getRemoteScript = getRemoteScript;
 const reactInVue = (compName, targetEl, attrs) => {
     const root = client_1.default.createRoot(targetEl);

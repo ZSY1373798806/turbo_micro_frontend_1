@@ -1,7 +1,7 @@
-const greet = (msg: string) => {
+const print = (msg: string) => {
 	alert(`react app: ${msg}`);
 };
 
 export default {
-	greet,
+	print,
 };

@@ -11,24 +11,32 @@ import Vue, {
  * @param module ReactButton
  * @returns
  */
-export const getRemoteScript = (
+
+export const getRemoteScript = async (
 	remoteUrl: string,
 	mfName: string,
 	module: string,
 ): Promise<string> => {
+	let scope = (window as any)[mfName];
+	if (scope?.get(module)) {
+		const result = await scope.get(module);
+		const remoteModule = result();
+		return Promise.resolve(remoteModule.default);
+	}
+
 	const script = document.createElement("script");
 	script.src = remoteUrl;
 	script.async = true;
 	document.head.appendChild(script);
 	return new Promise((resolve, reject) => {
 		script.onload = async () => {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			const result = await (window as any)[mfName].get(module);
+			scope = (window as any)[mfName];
+			const result = await scope.get(module);
 			const remoteModule = result();
 			resolve(remoteModule.default);
 		};
 		script.onerror = () => {
-			reject(new Error("加载远程地址： 失败"));
+			reject(new Error("加载远程地址失败"));
 		};
 	});
 };

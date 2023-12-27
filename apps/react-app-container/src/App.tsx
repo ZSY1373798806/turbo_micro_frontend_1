@@ -3,9 +3,19 @@ import style from "./App.module.css";
 
 import RemoteVue from "./components/RemoteVue";
 import RemoteReact from "./components/RemoteReact";
+import { getRemoteScript } from "@repe/remote-utils";
 const ReactHeader = React.lazy(() => import("ReactApp/ReactHeader"));
 
 function App() {
+	const handleClick = async () => {
+		const REMOTE_URL = process.env.REACT_APP_REACT_REMOTE_URL as string;
+		const module = (await getRemoteScript(
+			`${REMOTE_URL}/remoteEntry.js`,
+			"ReactApp",
+			"./ReactUtils",
+		)) as unknown as ReactAppUtils;
+		module.print("zsy");
+	};
 	return (
 		<div className="App">
 			<div className={style.header}>
@@ -15,6 +25,7 @@ function App() {
 					module="./ReactHeader"
 					attrs={{ title: "this is remote react header" }}
 				/>
+				<button onClick={handleClick}>调用react remote alert</button>
 			</div>
 			<div className={style.body}>
 				<div className={style.sidebar}>

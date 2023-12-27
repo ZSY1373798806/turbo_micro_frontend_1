@@ -2,7 +2,10 @@
   "name": "turbo_micro_frontend",
   "private": true,
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo run build",
+    "build:test": "turbo run build:test",
+    "build:pre": "turbo run build:pre",
+    "test": "turbo run test",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

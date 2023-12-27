@@ -12,3 +12,7 @@ declare module "ReactApp/ReactHeader" {
 	const Component: React.LazyExoticComponent<React.ComponentType<IProps>>;
 	export default Component;
 }
+
+declare interface ReactAppUtils {
+	print: (msg: string) => void;
+}
