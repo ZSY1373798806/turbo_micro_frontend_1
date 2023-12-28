@@ -4,12 +4,11 @@
 		"build": {
 			"dependsOn": ["^build"],
 			"inputs": ["src/**", "craco.config.js", "vue.config.js"],
-			"dotEnv": [".env.*"],
 			"outputs": ["dist/**"]
 		},
 		"build:test": {
-			"inputs": ["src/**/*", ".env.*", "craco.config.js", "vue.config.js"],
-			"dotEnv": [".env.*"],
+      "dependsOn": ["^build"],
+			"inputs": ["src/**", "craco.config.js", "vue.config.js"],
 			"outputs": ["dist/**"]
 		},
 		"lint": {
