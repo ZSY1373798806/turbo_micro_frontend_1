@@ -3,12 +3,12 @@
 	"pipeline": {
 		"build": {
 			"dependsOn": ["^build"],
-			"inputs": ["src/**", "craco.config.js", "vue.config.js"],
+			"inputs": ["src/**", ".env.*", "craco.config.js", "vue.config.js"],
 			"outputs": ["dist/**"]
 		},
 		"build:test": {
       "dependsOn": ["^build"],
-			"inputs": ["src/**", "craco.config.js", "vue.config.js"],
+			"inputs": ["src/**", ".env.*", "craco.config.js", "vue.config.js"],
 			"outputs": ["dist/**"]
 		},
 		"lint": {

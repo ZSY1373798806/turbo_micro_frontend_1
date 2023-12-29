@@ -37,7 +37,6 @@ const RemoteVue = (props: IProps) => {
 			mfName,
 			module,
 		);
-		console.log(ref.current);
 		if (ref.current) {
 			vueInReact(result, ref.current, {
 				props: attrs.props,

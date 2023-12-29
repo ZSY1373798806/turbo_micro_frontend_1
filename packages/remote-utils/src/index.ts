@@ -44,7 +44,7 @@ export const getRemoteScript = async (
 export const reactInVue = (
 	compName: string,
 	targetEl: Element | DocumentFragment,
-	attrs: Attributes,
+	attrs: Object,
 ) => {
 	const root = ReactDOM.createRoot(targetEl);
 	root.render(React.createElement(compName, attrs));

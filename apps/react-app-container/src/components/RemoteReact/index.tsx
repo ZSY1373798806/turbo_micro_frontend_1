@@ -1,7 +1,5 @@
-import { getRemoteScript } from "@repe/remote-utils";
+import { getRemoteScript, reactInVue } from "@repe/remote-utils";
 import { useEffect, useRef } from "react";
-import React from "react";
-import ReactDOM from "react-dom/client";
 
 interface ReactHeaderProps {
 	mfName: "ReactApp";
@@ -26,8 +24,7 @@ const RemoteReact = (props: IProps) => {
 			module,
 		);
 		if (ref.current) {
-			const root = ReactDOM.createRoot(ref.current);
-			root.render(React.createElement(result as string, attrs));
+			reactInVue(result, ref.current, attrs);
 		}
 	};
 	useEffect(() => {

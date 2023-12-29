@@ -53,7 +53,7 @@ function App() {
 					attrs={{
 						props: {
 							bgColor: "yellow",
-							title: "this is sidebar title",
+							title: "this is footer title",
 							year: 2023,
 						},
 					}}

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<Remote mfName="ReactApp" module="./ReactUserInfo" />
-		<div>Sidebar</div>
+		<div>Vue Sidebar</div>
 	</div>
 </template>
 

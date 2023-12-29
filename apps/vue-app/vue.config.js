@@ -1,6 +1,5 @@
 const { defineConfig } = require("@vue/cli-service");
 const { ModuleFederationPlugin } = require("webpack").container;
-console.log("------------------------", process.env.VUE_APP_REMOTE_PATH);
 module.exports = defineConfig({
 	transpileDependencies: true,
 	publicPath: process.env.VUE_APP_PUBLIC_PATH,
@@ -20,10 +19,7 @@ module.exports = defineConfig({
 		if (process.env.NODE_ENV === "development") {
 			config.devtool = "source-map";
 		}
-		config.externals = {
-			react: "React",
-			"react-dom": "ReactDOM",
-		};
+		config.externals = {};
 		config.plugins.push(
 			new ModuleFederationPlugin({
 				name: "VueApp",
